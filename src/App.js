@@ -7,11 +7,12 @@ import RenderContacts from "./RenderContacts";
 
 function App() {
   const [contact, setContact] = useState([]);
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [searchText, setSearch] = useState(null);
   let [searchedArray, setArray] = useState([]);
-
+  const nameRef = React.useRef(null);
+  const contactRef = React.useRef(null)
   const [obj, setObj] = useState({
     name: "",
     Number: "",
@@ -29,6 +30,9 @@ function App() {
   const add = () => {
     if (obj.name.length > 0 && obj.Number.length > 0) {
       setContact([...contact, obj]);
+      nameRef.current.value=""
+      contactRef.current.value=""
+      setObj({name:"",Number:""})
     }
   };
 
@@ -59,6 +63,8 @@ function App() {
       {searchText === null ? (
         <>
           <RenderContacts
+           nameRef={nameRef}
+           contactRef={contactRef}
             add={add}
             handleChnge={handleChnge}
             setList={setContact}
@@ -67,7 +73,7 @@ function App() {
         </>
       ) : (
         <>
-          <RenderContacts setList={setArray} contactlist={searchedArray} />
+          <RenderContacts  setList={setArray} contactlist={searchedArray} />
         </>
       )}
     </>
