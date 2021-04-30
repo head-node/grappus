@@ -18,7 +18,11 @@ const RenderContacts = ({
   return (
     <Router>
       <div className="display-container">
-        <div className="add-contact">
+       
+
+        <Switch>
+          <Route exact path="/"> 
+          <div className="add-contact">
           <div style={{ display: "flex", justifyContent: "space-evenly" }}>
             <input
               name="name"
@@ -37,9 +41,6 @@ const RenderContacts = ({
             <button onClick={add}>Add</button>
           </div>
         </div>
-
-        <Switch>
-          <Route exact path="/">
             {contactlist
               .sort((a, b) =>
                 a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1

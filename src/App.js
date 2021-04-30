@@ -30,7 +30,7 @@ function App() {
   const add = () => {
     if (obj.name.length > 0 && obj.Number.length > 0) {
       setContact([...contact, obj]);
-      nameRef.current.value=""
+      nameRef.current.value=""          
       contactRef.current.value=""
       setObj({name:"",Number:""})
     }
